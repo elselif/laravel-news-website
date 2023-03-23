@@ -17,11 +17,16 @@ class AdminController extends Controller
       Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/admin/logout/page');
     } //end method
 
     public function AdminLogin()
     {
         return view('admin.admin_login');
+    } //end method
+
+    public function AdminLogoutPage()
+    {
+        return view('admin.admin_logout');
     } //end method
 }
