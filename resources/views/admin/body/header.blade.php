@@ -137,7 +137,7 @@
                           </div>
 
                           <!-- item-->
-                          <a href="javascript:void(0);" class="dropdown-item notify-item">
+                          <a href="{{route('admin.profile')}}" class="dropdown-item notify-item">
                               <i class="fe-user"></i>
                               <span>My Account</span>
                           </a>
