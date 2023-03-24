@@ -1,5 +1,7 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <div class="content">
 
         <!-- Start Content-->
@@ -98,7 +100,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="example-fileinput" class="form-label">Admin Photo</label>
-                                                <input type="file" name="photo" id="example-fileinput"
+                                                <input type="file" name="photo" id="image"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -106,7 +108,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="example-fileinput" class="form-label"></label>
-                                                <img src="{{ !empty($adminData->photo) ? url('upload/admin_images/' . $adminData->photo) : url('upload/no_image.jpg') }}"
+                                                <img id="showImage" src="{{ !empty($adminData->photo) ? url('upload/admin_images/' . $adminData->photo) : url('upload/no_image.jpg') }}"
                                                     class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
                                             </div>
                                         </div>
@@ -136,4 +138,21 @@
     </div> <!-- container -->
 
     </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#image').change(function (e) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+
+</script>
+
+
+
 @endsection
