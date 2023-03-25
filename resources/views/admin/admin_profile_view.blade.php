@@ -27,7 +27,7 @@
                 <div class="col-lg-4 col-xl-4">
                     <div class="card text-center">
                         <div class="card-body">
-                            <img src="{{ !empty($adminData->photo) ? url('upload/admin_images/' . $adminData->photo) : url('upload/no_image.jpg') }}"
+                            <img src="{{ !empty($adminData->photo) ? url('upload/admin_images/'.$adminData->photo) : url('upload/no_image.jpg') }}"
                                 class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
 
                             <h4 class="mb-0">{{ $adminData->name }}</h4>
@@ -64,7 +64,10 @@
                         <div class="card-body">
 
                             <div class="tab-pane" id="settings">
-                                <form>
+                                <form method="post" action="{{route('admin.profile.store')}}" enctype="multipart/from-data">
+                                    
+                                    @csrf
+                                    
                                     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i>Admin
                                         Personal Info</h5>
                                     <div class="row">
@@ -108,7 +111,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="example-fileinput" class="form-label"></label>
-                                                <img id="showImage" src="{{ !empty($adminData->photo) ? url('upload/admin_images/' . $adminData->photo) : url('upload/no_image.jpg') }}"
+                                                <img id="showImage" src="{{ !empty($adminData->photo) ? url('upload/admin_images/'.$adminData->photo) : url('upload/no_image.jpg') }}"
                                                     class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
                                             </div>
                                         </div>
