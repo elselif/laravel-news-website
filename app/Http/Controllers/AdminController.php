@@ -20,10 +20,7 @@ class AdminController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        $notification = array(
-            'message' => 'Admin Logout Successfully',
-            'alert-type' => 'info'
-        );
+       
 
 
         return redirect('/admin/logout/page')->with($notification);
