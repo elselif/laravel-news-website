@@ -50,4 +50,4 @@ Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassw
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
 
-Route::get('/admin/logout/page', [AdminController::class, 'AdminLogoutPage'])->name('admin.logout');
+Route::get('/admin/logout/page', [AdminController::class, 'AdminLogoutPage'])->name('admin.logout.page');

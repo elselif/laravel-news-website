@@ -23,7 +23,7 @@ class AdminController extends Controller
        
 
 
-        return redirect('/admin/logout/page')->with($notification);
+        return redirect('/admin/logout/page');
     } //end method
 
     public function AdminLogin()
