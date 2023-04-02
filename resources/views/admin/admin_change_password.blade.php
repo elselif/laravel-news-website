@@ -60,7 +60,7 @@
                                                 <input type="password" name="old_password" class="form-control @error('old_password') is-invalid
                                                           
                                                 @enderror" id="current_password"
-                                                    placeholder="Enter first name" >
+                                                    placeholder="Enter your old password" >
 
                                                   @error('old_password')
                                                             <span class="text-danger">{{$message}}</span>
