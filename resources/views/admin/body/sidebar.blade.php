@@ -24,22 +24,22 @@
                        
                     </li>
 
-                      <li class="menu-title mt-2">Apps</li>
+                      <li class="menu-title mt-2">Menu</li>
 
 
                       <li>
                           <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                               <i class="mdi mdi-cart-outline"></i>
-                              <span> Ecommerce </span>
+                              <span> Category </span>
                               <span class="menu-arrow"></span>
                           </a>
                           <div class="collapse" id="sidebarEcommerce">
                               <ul class="nav-second-level">
                                   <li>
-                                      <a href="ecommerce-dashboard.html">Dashboard</a>
+                                      <a href="{{ route('all.category') }}">All Category</a>
                                   </li>
                                   <li>
-                                      <a href="ecommerce-products.html">Products</a>
+                                      <a href="ecommerce-products.html">Add Category</a>
                                   </li>
                                   
                               </ul>
