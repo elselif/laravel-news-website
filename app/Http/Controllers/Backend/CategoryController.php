@@ -16,4 +16,10 @@ class CategoryController extends Controller
         return view('backend.category.category_all', compact('categories')); // return view with categories
 
     } // end method
+
+    public function AddCategory(){
+
+        return view('backend.category.category_add');
+
+    } // end method
 }
