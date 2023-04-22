@@ -50,8 +50,8 @@
                                                   <td>{{$item->subcategory_name}}</td>
                                                   <td>
 
-                                                            <a href="{{route('edit.category',$item->id)}}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
-                                                            <a href="{{route('delete.category',$item->id)}}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete" >Delete</a>
+                                                            <a href="{{route('edit.subcategory',$item->id)}}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
+                                                            <a href="{{route('delete.subcategory',$item->id)}}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete" >Delete</a>
 
 
                                                   </td>

@@ -123,6 +123,50 @@ class CategoryController extends Controller
     
         } // end method
 
+        public function EditSubcategory($id){
+    
+            $subcategory = Subcategory::findOrFail($id); // get subcategory by id
+            $categories = Category::latest()->get(); // get all categories from database
+    
+            return view('backend.subcategory.subcategory_edit', compact('subcategory', 'categories')); // return view with subcategory and categories
+    
+        } // end method
+
+        public function UpdateSubCategory(Request $request) {
+    
+            $subcat_id = $request->id; // get subcategory id from form
+             
+            SubCategory::findOrFail($subcat_id)->update([ // find subcategory by id and update
+                'category_id' => $request->category_id, // get category id from form
+                'subcategory_name' => $request->subcategory_name, // get category name from form
+                'subcategory_slug' => strtolower(str_replace(' ','-', $request -> subcategory_name)), // get category slug from form
+            ]);
+    
+    
+            $notification = array(
+                'message' => 'SubCategory Updated Successfully',
+                'alert-type' => 'success'
+            );
+    
+            return Redirect()->route('all.subcategory')->with($notification);
+    
+    
+    
+        } // end method
+
+        public function DeleteSubcategory($id){
+    
+            Subcategory::findOrFail($id)->delete(); // find subcategory by id and delete
+    
+            $notification = array(
+                'message' => 'SubCategory Deleted Successfully',
+                'alert-type' => 'success'
+            );
+    
+            return Redirect()->back()->with($notification);
+    
+        } // end method
+
 
 
     
