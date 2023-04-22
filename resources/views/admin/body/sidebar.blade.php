@@ -45,6 +45,24 @@
                               </ul>
                           </div>
                       </li>
+                      <li>
+                        <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                            <i class="mdi mdi-cart-outline"></i>
+                            <span> SubCategory </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarEcommerce">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('all.subcategory') }}">All SubCategory</a>
+                                </li>
+                                <li>
+                                    <a href="ecommerce-products.html">Add SubCategory</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </li>
 
                       <li>
                           <a href="#sidebarCrm" data-bs-toggle="collapse">
