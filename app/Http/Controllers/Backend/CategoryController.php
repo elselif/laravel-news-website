@@ -41,7 +41,7 @@ class CategoryController extends Controller
 
 
 
-    }
+    } // end method
 
     public function EditCategory($id){
 
@@ -94,6 +94,36 @@ class CategoryController extends Controller
             return view('backend.subcategory.subcategory_all', compact('subcategories')); // return view with subcategories
     
         } // end method
+
+        public function AddSubcategory(){
+    
+            $categories = Category::latest()->get(); // get all categories from database
+    
+            return view('backend.subcategory.subcategory_add', compact('categories')); // return view with categories
+    
+        } // end method
+
+        public function StoreSubCategory(Request $request){
+
+            SubCategory::insert([
+                'category_id' => $request->category_id, // get category id from form
+                'subcategory_name' => $request->subcategory_name, // get category name from form
+                'subcategory_slug' => strtolower(str_replace(' ','-', $request -> subcategory_name)), // get category slug from form
+            ]);
+    
+    
+            $notification = array(
+                'message' => 'SubCategory Inserted Successfully',
+                'alert-type' => 'success'
+            );
+    
+            return Redirect()->route('all.subcategory')->with($notification);
+    
+    
+    
+        } // end method
+
+
 
     
 

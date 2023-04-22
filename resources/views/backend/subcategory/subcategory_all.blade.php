@@ -11,7 +11,7 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                              <a href="{{route('add.category')}}" class="btn btn-blue rounded-pill waves-effect waves-light">Add SubCategory</a>
+                              <a href="{{route('add.subcategory')}}" class="btn btn-blue rounded-pill waves-effect waves-light">Add SubCategory</a>
 
                             </ol>
                         </div>
@@ -46,7 +46,7 @@
                                     
                                         <tr>
                                                   <td>{{$key+1}}</td>
-                                                  <td>{{$item->category_id}}</td>
+                                                  <td>{{$item['category']['category_name']}}</td>
                                                   <td>{{$item->subcategory_name}}</td>
                                                   <td>
 
