@@ -102,4 +102,9 @@ class AdminController extends Controller
 
     }
 
+    public function AllAdmin(){
+        $alladminuser = User::where('role','admin')->latest()->get();
+        return view('backend.admin.all_admin', compact('alladminuser'));
+    }
+
 }

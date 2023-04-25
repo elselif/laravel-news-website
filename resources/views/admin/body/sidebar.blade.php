@@ -121,19 +121,19 @@
 
                       
 
-                      <li class="menu-title mt-2">Custom</li>
+                      <li class="menu-title mt-2">Settings</li>
 
                       <li>
                           <a href="#sidebarAuth" data-bs-toggle="collapse">
                               <i class="mdi mdi-account-circle-outline"></i>
-                              <span> Auth Pages </span>
+                              <span> Setting Admin User </span>
                               <span class="menu-arrow"></span>
                           </a>
                           <div class="collapse" id="sidebarAuth">
                               <ul class="nav-second-level">
                                   <li>
-                                      <a href="auth-login.html">Log In</a>
-                                      <a href="auth-login.html">Log Out</a>
+                                      <a href="{{route('all.admin')}}">All Admin</a>
+                                      <a href="auth-login.html">Add Admin</a>
                                   </li>
                                   
                               </ul>
