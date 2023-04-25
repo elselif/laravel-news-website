@@ -168,6 +168,30 @@ class AdminController extends Controller
         return redirect()->route('all.admin')->with($notification);
     }
 
+    public function InactiveAdminUser($id)
+    {
+        User::findOrFail($id)->update(['status' => 'inactive']);
+
+        $notification = array(
+            'message' => 'Admin User Inactive Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    } 
+
+    public function ActiveAdminUser($id)
+    {
+        User::findOrFail($id)->update(['status' => 'active']);
+
+        $notification = array(
+            'message' => 'Admin User Active Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    }
+
 
 
 }
