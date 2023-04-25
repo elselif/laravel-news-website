@@ -133,7 +133,7 @@
                               <ul class="nav-second-level">
                                   <li>
                                       <a href="{{route('all.admin')}}">All Admin</a>
-                                      <a href="auth-login.html">Add Admin</a>
+                                      <a href="{{route('add.admin')}}">Add Admin</a>
                                   </li>
                                   
                               </ul>
