@@ -11,7 +11,7 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                              <a href="{{route('add.admin')}}" class="btn btn-blue rounded-pill waves-effect waves-light">Add News Post</a>
+                              <a href="{{route('add.news.post')}}" class="btn btn-blue rounded-pill waves-effect waves-light">Add News Post</a>
 
                             </ol>
                         </div>
