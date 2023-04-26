@@ -46,7 +46,10 @@
                                     
                                         <tr>
                                                   <td>{{$key+1}}</td>
-                                                  <td>{{$item['category']['category_name']}}</td>
+                                                  <td>{{ $item['category'] ? $item['category']['category_name'] : '' }}</td>
+
+                                                  {{-- <td>{{$item['category']['category_name']}}</td> --}}
+                                                
                                                   <td>{{$item->subcategory_name}}</td>
                                                   <td>
 

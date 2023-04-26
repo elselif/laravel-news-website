@@ -4,7 +4,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Dashboard |Easy News Website </title>
+        <title>Dashboard </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -506,7 +506,6 @@
         <script src={{asset("backend/assets/libs/mohithg-switchery/switchery.min.js")}}></script>
         <script src={{asset("backend/assets/libs/multiselect/js/jquery.multi-select.js")}}></script>
         <script src={{asset("backend/assets/libs/select2/js/select2.min.js")}}></script>
-        <script src={{asset("backend/assets/libs/jquery-mockjax/jquery.mockjax.min.js")}}></script>
         <script src={{asset("backend/assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js")}}></script>
         <script src={{asset("backend/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js")}}></script>
         <script src={{asset("backend/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js")}}></script>

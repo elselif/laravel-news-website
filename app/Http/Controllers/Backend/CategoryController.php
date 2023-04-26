@@ -87,7 +87,7 @@ class CategoryController extends Controller
 
     /////////////////////////////// Subcategory All///////////////////////////////
 
-    public function AllSubcategory(){
+    public function AllSubCategory(){
             
             $subcategories = Subcategory::latest()->get(); // get all subcategories from database
     
@@ -95,7 +95,7 @@ class CategoryController extends Controller
     
         } // end method
 
-        public function AddSubcategory(){
+        public function AddSubCategory(){
     
             $categories = Category::latest()->get(); // get all categories from database
     
@@ -166,6 +166,12 @@ class CategoryController extends Controller
             return Redirect()->back()->with($notification);
     
         } // end method
+
+        public function GetSubCategory($category_id)
+        {
+            $subcat = Subcategory::where('category_id',$category_id)->orderBy('subcategory_name','ASC')->get();
+            return json_encode($subcat);
+        }
 
 
 
