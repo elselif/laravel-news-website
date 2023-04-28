@@ -122,6 +122,8 @@ Route::controller(NewsPostController::class)->group(function (){
     Route::get('/edit/news/post/{id}', 'EditNewsPost')->name('edit.news.post'); 
     Route::post('/update/news/post','UpdateNewsPost')->name('update.news.post');
     Route::get('/delete/news/post/{id}','DeleteNewsPost')->name('delete.news.post');
+    Route::get('/inactive/news/post/{id}','InactiveNewsPost')->name('inactive.news.post');
+    Route::get('/active/news/post/{id}','ActiveNewsPost')->name('active.news.post');
 
 });
 
