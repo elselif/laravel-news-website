@@ -30,7 +30,8 @@
                         <div class="card-body">
 
 
-                            <form id="myForm" method="post" action="{{ route('category.store') }}">
+                            <form id="myForm" method="post" action="{{ route('store.news.post') }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -83,62 +84,62 @@
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label for="inputEmail4" class="form-label">Tags</label>
-                                        <input type="text" class="selectize-close-btn" value="awesome">
+                                        <input type="text" name="tags" class="selectize-close-btn" value="awesome">
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-check mb-2 form-check-primary">
-                                                <input class="form-check-input" type="checkbox" name="breaking_news" value="1"
-                                                    id="customcheck1" >
+                                                <input class="form-check-input" type="checkbox" name="breaking_news"
+                                                    value="1" id="customcheck1">
                                                 <label class="form-check-label" for="customckeck1">Breaking News</label>
                                             </div>
                                             <div class="form-check mb-2 form-check-primary">
-                                                <input class="form-check-input" type="checkbox" name="top_slider" value="1"
-                                                    id="customcheck1" >
+                                                <input class="form-check-input" type="checkbox" name="top_slider"
+                                                    value="1" id="customcheck2">
                                                 <label class="form-check-label" for="customckeck2">Top Slider</label>
                                             </div>
                                         </div>
                                     </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-check mb-2 form-check-danger">
-                                                <input class="form-check-input" type="checkbox" name="first_section_three" value="1"
-                                                    id="customcheck1" >
-                                                <label class="form-check-label" for="customckeck3">First Section Three</label>
-                                            </div>
-                                            <div class="form-check mb-2 form-check-danger">
-                                                <input class="form-check-input" type="checkbox" name="first_section_nine" value="1"
-                                                    id="customcheck1" >
-                                                <label class="form-check-label" for="customckeck4">First Section Nine</label>
-                                            </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-check mb-2 form-check-danger">
+                                            <input class="form-check-input" type="checkbox" name="first_section_three"
+                                                value="1" id="customcheck3">
+                                            <label class="form-check-label" for="customckeck3">First Section Three</label>
+                                        </div>
+                                        <div class="form-check mb-2 form-check-danger">
+                                            <input class="form-check-input" type="checkbox" name="first_section_nine"
+                                                value="1" id="customcheck4">
+                                            <label class="form-check-label" for="customckeck4">First Section Nine</label>
                                         </div>
                                     </div>
-
-
                                 </div>
 
 
-
-
-                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save
-                                    Changes</button>
-
-                            </form>
-
-                        </div> <!-- end card-body -->
-                    </div> <!-- end card-->
-                </div> <!-- end col -->
-            </div>
-            <!-- end row -->
+                        </div>
 
 
 
 
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Save
+                            Changes</button>
+
+                        </form>
+
+                    </div> <!-- end card-body -->
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
 
 
 
 
-        </div> <!-- container -->
+
+
+
+
+    </div> <!-- container -->
 
     </div> <!-- content -->
 
@@ -147,39 +148,17 @@
         $(document).ready(function() {
             $('#myForm').validate({
                 rules: {
-                    surname: {
-                        required: true,
-                    },
-                    name: {
-                        required: true,
-                    },
-                    email: {
-                        required: true,
-                    },
-                    phone: {
-                        required: true,
-                    },
-                    password: {
+                    news_title: {
                         required: true,
                     },
 
+
                 },
                 messages: {
-                    surnamae: {
-                        required: 'Please Enter user Name',
+                    news_title: {
+                        required: 'Please Enter News Title',
                     },
-                    name: {
-                        required: 'Please Enter Name',
-                    },
-                    email: {
-                        required: 'Please Enter Email',
-                    },
-                    phone: {
-                        required: 'Please Enter Phone',
-                    },
-                    password: {
-                        required: 'Please Enter Password',
-                    },
+
                 },
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
@@ -209,29 +188,29 @@
     </script>
 
 
-<script type="text/javascript">
-          $(document).ready(function(){
-              $('select[name="category_id"]').on('change', function(){
-                  var category_id = $(this).val();
-                  if (category_id) {
-                      $.ajax({
-                          url: "{{ url('/subcategory/ajax') }}/"+category_id,
-                          type: "GET",  
-                          dataType: "json", 
-                          success:function(data){
-                              $('select[name="subcategory_id"]').html('');
-                              var d =$('select[name="subcategory_id"]').empty();
-                              $.each(data, function(key, value){
-                                  $('select[name="subcategory_id"]').append('<option value="'+ value.id +'"> ' + value.subcategory_name + '</option>');
-                              });
-                          },
-                      });
-                  } else{
-                      alert('danger');
-                  }
-              });
-          });
-          
-      </script>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="category_id"]').on('change', function() {
+                var category_id = $(this).val();
+                if (category_id) {
+                    $.ajax({
+                        url: "{{ url('/subcategory/ajax') }}/" + category_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="subcategory_id"]').html('');
+                            var d = $('select[name="subcategory_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="subcategory_id"]').append(
+                                    '<option value="' + value.id + '"> ' + value
+                                    .subcategory_name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+    </script>
 @endsection

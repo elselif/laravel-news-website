@@ -118,7 +118,7 @@ Route::controller(NewsPostController::class)->group(function (){
 
     Route::get('/all/news/post', 'AllNewsPost')->name('all.news.post'); 
     Route::get('/add/news/post', 'AddNewsPost')->name('add.news.post'); 
-    // Route::post('/store/category', 'StoreCategory')->name('category.store'); 
+    Route::post('/store/news/post', 'StoreNewsPost')->name('store.news.post'); 
     // Route::get('/edit/category/{id}', 'EditCategory')->name('edit.category'); 
     // Route::post('/update/category/', 'UpdateCategory')->name('category.update'); 
     // Route::get('/delete/category/{id}', 'DeleteCategory')->name('delete.category');
