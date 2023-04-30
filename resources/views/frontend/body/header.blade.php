@@ -92,15 +92,19 @@
                         <li id="menu-item-291"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-291 has-sub">
                             <a href=" ">{{$category->category_name}}</a>
+
+                            @php
+                            $subcategories = App\Models\Subcategory::where('category_id', $category->id)->orderBy('subcategory_name', 'ASC')->get();
+                            @endphp
                             <ul class="sub-menu">
+                                @foreach ($subcategories as $subcategory )
+                                    
+                                
                                 <li id="menu-item-294"
                                     class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-294">
-                                    <a href=" ">Sub Sports</a>
+                                    <a href=" ">{{$subcategory->subcategory_name}}</a>
                                 </li>
-                                <li id="menu-item-292"
-                                    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-292">
-                                    <a href=" ">Sub Sports</a>
-                                </li>
+                                @endforeach
                                 
 
                             </ul>
