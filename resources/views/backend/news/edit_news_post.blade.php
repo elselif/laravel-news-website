@@ -31,7 +31,8 @@
                                          
     <form id="myForm" method="post" action="{{ route('update.news.post') }}" enctype="multipart/form-data">
     	@csrf 
-              <input type="hidden" name="id" value="{{ $newspost->id }}">
+    	
+        <input type="hidden" name="id" value="{{ $newspost->id }}">
 
         <div class="row">
             <div class="form-group col-md-6 mb-3">
@@ -47,10 +48,17 @@
              <div class="form-group col-md-6 mb-3">
                 <label for="inputEmail4" class="form-label"> Sub Category </label>
                <select name="subcategory_id" class="form-select" id="example-select">
-               <option>Select SubCategory </option>
+
+                @if($newspost->subcategory_id == NULL)
+
+                @else
+                 <option>Select SubCategory </option>
                 @foreach($subcategories as $subcategory)
                 <option value="{{ $subcategory->id }}" {{ $subcategory->id == $newspost->subcategory_id ? 'selected' : '' }} >{{ $subcategory->subcategory_name }}</option>
                 @endforeach
+                
+                @endif
+              
                 
             </select>
             </div>
@@ -199,7 +207,6 @@
 
  
     <script type="text/javascript">
-
         $(document).ready(function(){
             $('select[name="category_id"]').on('change', function(){
                 var category_id = $(this).val();
@@ -222,8 +229,6 @@
             });
         });
         
-
-
     </script>
 
 

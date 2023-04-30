@@ -5,39 +5,39 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\SubCategory;
+use App\Models\Subcategory;
 use App\Models\User;
 use App\Models\NewsPost;
-use Intervention\Image\Facades\Image;
 use Carbon\Carbon; 
-
-
+use Intervention\Image\Facades\Image;
 
 class NewsPostController extends Controller
 {
-    public function AllNewsPost()
-    {
-        $allnews = NewsPost::latest()->get(); //NewsPost bir model sınıfıdır ve news_posts tablosuna karşılık gelir. latest() yöntemi, en son oluşturulan haberleri en üstte olacak şekilde sıralar. get() yöntemi ise sorguyu yürütür ve sonucu bir koleksiyon olarak döndürür.
-        return view('backend.news.all_news_post', compact('allnews'));
-    } //end method
+    public function AllNewsPost(){
 
-    public function AddNewsPost()
-    {
-        $categories = Category::latest()->get();
-        $subcategories = SubCategory::latest()->get();
-        $adminuser = User::where('role','admin')->latest()->get();
-        
-        return view('backend.news.add_news_post', compact('categories', 'subcategories','adminuser'));
-    } //end method
+        $allnews = NewsPost::latest()->get();
+        return view('backend.news.all_news_post',compact('allnews'));
+    } // End Method
 
-    public function StoreNewsPost(Request $request)
-    {
-        $image = $request -> file('image');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension(); //hexdec() yöntemi, onaltılık sayı sisteminden ondalık sayı sistemine dönüştürür. uniqid() yöntemi, benzersiz bir ID oluşturur. getClientOriginalExtension() yöntemi, yüklenen dosyanın uzantısını döndürür.
-        Image::make($image)->resize(784,436)->save('upload/news/'.$name_gen); //make() yöntemi, yeni bir görüntü örneği oluşturur. resize() yöntemi, görüntüyü yeniden boyutlandırır. save() yöntemi, görüntüyü belirtilen yola kaydeder.
-        $save_url = 'upload/news'.$name_gen;
+
+    public function AddNewsPost(){
+         
+         $categories = Category::latest()->get();
+         $subcategories = Subcategory::latest()->get();
+         $adminuser = User::where('role','admin')->latest()->get();
+        return view('backend.news.add_news_post',compact('categories','subcategories','adminuser'));
+    }// End Method
+
+
+    public function StoreNewsPost(Request $request){
+
+        $image = $request->file('image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(784,436)->save('upload/news/'.$name_gen);
+        $save_url = 'upload/news/'.$name_gen;
 
         NewsPost::insert([
+
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'user_id' => $request->user_id,
@@ -57,25 +57,27 @@ class NewsPostController extends Controller
             'image' => $save_url,
             'created_at' => Carbon::now(),  
 
-        ]); //end insert method
-        $notification = array(
+        ]);
+
+         $notification = array(
             'message' => 'News Post Inserted Successfully',
             'alert-type' => 'success'
 
         );
         return redirect()->route('all.news.post')->with($notification);
-        
-    } //end method
 
-    public function EditNewsPost($id)
-    {   
-        $categories = Category::latest()->get();
-        $subcategories = SubCategory::latest()->get();
-        $adminuser = User::where('role','admin')->latest()->get();
-        $newspost = NewsPost::findOrFail($id);
-        return view('backend.news.edit_news_post', compact('categories', 'subcategories','adminuser','newspost'));
-    } //end method
 
+    }// End Method
+
+
+    public function EditNewsPost($id){
+
+         $categories = Category::latest()->get();
+         $subcategories = Subcategory::latest()->get();
+         $adminuser = User::where('role','admin')->latest()->get();
+         $newspost = NewsPost::findOrFail($id);
+         return view('backend.news.edit_news_post',compact('categories','subcategories','adminuser','newspost'));
+    }// End Method
 
     public function UpdateNewsPost(Request $request){
 
@@ -154,6 +156,7 @@ class NewsPostController extends Controller
 
     }// End Method
 
+
     public function DeleteNewsPost($id){
 
         $post_image = NewsPost::findOrFail($id);
@@ -170,6 +173,7 @@ class NewsPostController extends Controller
         return redirect()->back()->with($notification);
 
     }// End Method
+
 
     public function InactiveNewsPost($id){
 
@@ -196,11 +200,10 @@ class NewsPostController extends Controller
         return redirect()->back()->with($notification);
 
     }// End Method
+
+
+
  
 
-
-    }
-
-
-
-
+} 
+ 
