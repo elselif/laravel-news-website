@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\NewsPost;
 
 class IndexController extends Controller
 {
@@ -12,4 +13,12 @@ class IndexController extends Controller
         return view('frontend.index');
 
     } //End method
+
+    public function NewsDetails($id,$slug){
+
+        $news = NewsPost::findOrFail($id);
+
+        return view('frontend.news.news_details', compact('news'));
+
+    }
 }

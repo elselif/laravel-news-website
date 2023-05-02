@@ -125,8 +125,13 @@ Route::controller(NewsPostController::class)->group(function (){
     Route::get('/inactive/news/post/{id}','InactiveNewsPost')->name('inactive.news.post');
     Route::get('/active/news/post/{id}','ActiveNewsPost')->name('active.news.post');
 
-});
+}); 
 
 
 
-});
+}); // end admin middleware
+
+
+// access for all
+
+Route::get('/news/details/{id}/{slug}',[IndexController::class, 'NewsDetails']);
