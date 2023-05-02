@@ -15,7 +15,7 @@
 
                             <figure class="authorPage-image">
                                 <img alt=""
-                                    src="{{ !empty($userData->photo) ? url('upload/user_images/' . $userData->photo) : url('upload/no_image.jpg') }}"
+                                    src="{{ (!empty($userData->photo)) ? url('upload/user_images/' . $userData->photo) : url('upload/no_image.jpg') }}"
                                     class="avatar avatar-96 photo" height="96" width="96" loading="lazy">
                             </figure>
                             <h1 class="authorPage-name">
