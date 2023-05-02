@@ -102,7 +102,7 @@
                                 
                                 <li id="menu-item-294"
                                     class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-294">
-                                    <a href=" ">{{$subcategory->subcategory_name}}</a>
+                                    <a href="{{url('news/subcategory/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }} ">{{$subcategory->subcategory_name}}</a>
                                 </li>
                                 @endforeach
                                 
