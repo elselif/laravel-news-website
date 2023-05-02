@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\NewsPost;
 use App\Models\Category;
 use App\Models\Subcategory;
+use Illuminate\Support\Facades\Session;
+use App;
 
 class IndexController extends Controller
 {
@@ -53,6 +56,16 @@ class IndexController extends Controller
 
 
         return view('frontend.news.subcategory_news', compact('news','breadsubcat','newstwo'));
+     }
+
+     public function Change(Request $request)
+     {
+
+        App::setLocale($request->lang);
+        session()->put('locale',$request->lang);
+
+        return redirect()->back();
+
      }
 
 }

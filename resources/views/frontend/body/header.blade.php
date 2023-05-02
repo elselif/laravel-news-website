@@ -1,6 +1,8 @@
 @php
     $cdate = new DateTime();
 @endphp
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <header class="themesbazar_header">
     <div class="container">
         <div class="row">
@@ -116,7 +118,7 @@
                        
                         <li id="menu-item-291"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-291 has-sub">
-                            <a href="{{url('news/category/'.$category->id.'/'.$category->category_slug)}} ">{{$category->category_name}}</a>
+                            <a href="{{url('news/category/'.$category->id.'/'.$category->category_slug)}} ">{{ GoogleTranslate::trans( $category->category_name, app()->getLocale())}}</a>
 
                             @php
                             $subcategories = App\Models\Subcategory::where('category_id', $category->id)->orderBy('subcategory_name', 'ASC')->get();
@@ -148,3 +150,11 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+    var url = "{{ route('changeLang')}}";
+    $(".changeLang").change(function(){
+        window.location.href = url + "?lang="+ $(this).val();
+    });
+</script>
