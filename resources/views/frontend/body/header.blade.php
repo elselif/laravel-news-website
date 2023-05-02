@@ -91,7 +91,7 @@
                        
                         <li id="menu-item-291"
                             class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-291 has-sub">
-                            <a href=" ">{{$category->category_name}}</a>
+                            <a href="{{url('news/category/'.$category->id.'/'.$category->category_slug)}} ">{{$category->category_name}}</a>
 
                             @php
                             $subcategories = App\Models\Subcategory::where('category_id', $category->id)->orderBy('subcategory_name', 'ASC')->get();
