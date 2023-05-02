@@ -73,7 +73,11 @@
                 </div>
                 <div class="singlePage2-tag">
                     <span> Tags : </span>
-                    <a href=" " rel="tag">Queen</a> <a href=" " rel="tag">London</a>
+                    @foreach ( $tags_all as $tag)
+                              
+                   
+                    <a href=" " rel="tag">{{ucwords($tag)}}</a> 
+                    @endforeach
                 </div>
 
                 <div class="single-add">
@@ -131,49 +135,9 @@
                     <div style="display: none;">
 
                     </div>
-                    <div class="main_section">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="contact-title ">
-                                    Subject *
-                                </div>
-                                <div class="contact-form">
-                                    <span class="wpcf7-form-control-wrap sub_title"><input type="text"
-                                            name="sub_title" value="" size="40"
-                                            class="wpcf7-form-control wpcf7-text" aria-invalid="false"
-                                            placeholder="News Sub Title"></span>
-                                </div>
-                            </div>
-                        </div>
+                    
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="contact-title">
-                                    Comments *
-                                </div>
-                                <div class="contact-form">
-                                    <span class="wpcf7-form-control-wrap news_details">
-                                        <textarea name="news_details" cols="20" rows="5"
-                                            class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false"
-                                            placeholder="News Details...."></textarea>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="contact-btn">
-                                <input type="submit" value="Submit Comments"
-                                    class="wpcf7-form-control has-spinner wpcf7-submit"><span
-                                    class="wpcf7-spinner"></span>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <div class="wpcf7-response-output" aria-hidden="true"></div>
                 </form>
@@ -185,101 +149,27 @@
                     <a href=" ">Related News </a>
                 </div>
                 <div class="row">
+
+                    @foreach ( $relatedNews as $item )
+                              
+                    
                     <div class="themesBazar-3 themesBazar-m2">
                         <div class="related-wrpp">
                             <div class="related-image">
-                                <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
+                                <a href="{{url('news/details/'.$item->id.'/'.$item->news_title_slug)}}  "><img class="lazyload" src="{{$item -> image}}"></a>
                             </div>
                             <h4 class="related-title">
-                                <a href=" ">Why people are industry hopping </a>
+                                <a href="{{url('news/details/'.$item->id.'/'.$item->news_title_slug)}}  ">{{$item -> news_title}} </a>
                             </h4>
                             <div class="related-meta">
                                 <a href=" "><i class="la la-tags"> </i>
-                                    Saturday, 10th September 2022
+                                    {{$item -> created_at -> format('1 M d Y')}}
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="themesBazar-3 themesBazar-m2">
-                        <div class="related-wrpp">
-                            <div class="related-image">
-                                <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                            </div>
-                            <h4 class="related-title">
-                                <a href=" ">Why people are industry hopping </a>
-                            </h4>
-                            <div class="related-meta">
-                                <a href=" "><i class="la la-tags"> </i>
-                                    Saturday, 10th September 2022
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="themesBazar-3 themesBazar-m2">
-                        <div class="related-wrpp">
-                            <div class="related-image">
-                                <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                            </div>
-                            <h4 class="related-title">
-                                <a href=" ">Why people are industry hopping </a>
-                            </h4>
-                            <div class="related-meta">
-                                <a href=" "><i class="la la-tags"> </i>
-                                    Saturday, 10th September 2022
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="themesBazar-3 themesBazar-m2">
-                        <div class="related-wrpp">
-                            <div class="related-image">
-                                <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                            </div>
-                            <h4 class="related-title">
-                                <a href=" ">Why people are industry hopping </a>
-                            </h4>
-                            <div class="related-meta">
-                                <a href=" "><i class="la la-tags"> </i>
-                                    Saturday, 10th September 2022
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="themesBazar-3 themesBazar-m2">
-                        <div class="related-wrpp">
-                            <div class="related-image">
-                                <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                            </div>
-                            <h4 class="related-title">
-                                <a href=" ">Why people are industry hopping </a>
-                            </h4>
-                            <div class="related-meta">
-                                <a href=" "><i class="la la-tags"> </i>
-                                    Saturday, 10th September 2022
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="themesBazar-3 themesBazar-m2">
-                        <div class="related-wrpp">
-                            <div class="related-image">
-                                <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                            </div>
-                            <h4 class="related-title">
-                                <a href=" ">Why people are industry hopping </a>
-                            </h4>
-                            <div class="related-meta">
-                                <a href=" "><i class="la la-tags"> </i>
-                                    Saturday, 10th September 2022
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
 
 
